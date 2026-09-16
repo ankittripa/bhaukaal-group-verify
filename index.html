@@ -1,100 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BHAUKAAL GROUP - Verify</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#fff;font-family:Arial;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.bg{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,#1a1a00,#000);z-index:-1}
-.logo{font-size:36px;font-weight:900;color:gold;letter-spacing:4px;text-shadow:0 0 20px gold}
-.sub{color:#888;letter-spacing:5px;font-size:10px;margin:10px 0 30px}
-.card{width:100%;max-width:420px;background:linear-gradient(145deg,#1a1a1a,#0a0a0a);border:2px solid gold;border-radius:20px;padding:25px;text-align:center;box-shadow:0 0 30px rgba(255,215,0,0.3)}
-.oval{width:120px;height:120px;margin:0 auto 15px;border-radius:50%;border:3px solid gold;overflow:hidden}
-.oval img{width:100%;height:100%;object-fit:cover}
-.badge{background:gold;color:#000;padding:5px 15px;border-radius:20px;font-size:10px;font-weight:bold;display:inline-block;margin-bottom:10px}
-.details{background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;margin:15px 0;text-align:left;font-size:13px;line-height:2}
-.details span{color:#888}.details b{float:right;color:#fff;font-size:11px}
-.verify{background:linear-gradient(90deg,gold,#FFA500);color:#000;padding:12px;border-radius:10px;font-weight:bold;margin-top:10px}
-.qr-container{margin:20px 0;padding:15px;background:rgba(255,255,255,0.1);border-radius:10px}
-.qr-container h3{font-size:12px;color:#888;margin-bottom:10px;letter-spacing:2px}
-#qrcode{display:flex;justify-content:center;background:white;padding:10px;border-radius:8px}
-#qrcode img, #qrcode canvas{width:150px!important;height:150px!important}
-.download-btn{background:linear-gradient(90deg,#FFD700,#FFA500);color:#000;padding:10px 20px;border-radius:8px;font-weight:bold;border:none;cursor:pointer;margin-top:10px;font-size:12px}
-.download-btn:hover{opacity:0.9}
-</style>
-</head>
-<body>
-<div class="bg"></div>
-<div class="logo">BHAUKAAL GROUP</div>
-<div class="sub">VALID • EXCLUSIVE • PREMIUM</div>
-<div class="card" id="card">Loading...</div>
-<script>
-const members={
-"BG-001":{name:"BHAUKAAL ANKIT",dob:"24/03/2005",membership:"15/08/2026",designation:"OWNER",status:"ACTIVE"},
-"BG-002":{name:"NIKKU",dob:"10/05/2006",membership:"15/08/2026",designation:"TARGET QUEEN",status:"ACTIVE"},
-"BG-003":{name:"SHIVAM",dob:"12/06/2006",membership:"15/08/2026",designation:"QUALITY KING",status:"ACTIVE"},
-"BG-004":{name:"SUJIT",dob:"05/08/2007",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-005":{name:"DEVIL",dob:"18/09/2006",membership:"15/08/2026",designation:"DEVIL KING",status:"ACTIVE"},
-"BG-006":{name:"Riya",dob:"20/11/2007",membership:"15/08/2026",designation:"SAFETY CHECKING",status:"ACTIVE"},
-"BG-007":{name:"RINKU",dob:"14/02/2006",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-008":{name:"Anshul",dob:"22/04/2007",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-009":{name:"ADI",dob:"30/07/2006",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-010":{name:"AYUSH",dob:"08/12/2006",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-011":{name:"Sk ABID LALA",dob:"11/01/2007",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-012":{name:"Target ka baap",dob:"03/03/2006",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-013":{name:"MRS. BHAUKAAL",dob:"24/03/2007",membership:"15/08/2026",designation:"OWNER / LOYALTY TEST",status:"ACTIVE"},
-"BG-014":{name:"Yashika",dob:"16/09/2007",membership:"15/08/2026",designation:"SEARCHING TARGET",status:"ACTIVE"},
-"BG-015":{name:"Avni",dob:"25/06/2007",membership:"15/08/2026",designation:"LOYALTY QUEEN",status:"ACTIVE"},
-"BG-016":{name:"Parmaar",dob:"19/10/2006",membership:"15/08/2026",designation:"SAFETY HEAD",status:"ACTIVE"},
-"BG-017":{name:"malik",dob:"07/05/2007",membership:"15/08/2026",designation:"REPORTING KING",status:"ACTIVE"},
-"BG-018":{name:"MALIK",dob:"13/08/2007",membership:"15/08/2026",designation:"REPORTING QUEEN",status:"ACTIVE"},
-"BG-019":{name:"ANIL",dob:"02/02/2006",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"},
-"BG-020":{name:"NOBITA",dob:"28/11/2006",membership:"15/08/2026",designation:"QUALITY KING",status:"ACTIVE"},
-"BG-021":{name:"SUNNY",dob:"15/04/2006",membership:"15/08/2026",designation:"TARGET BOY",status:"ACTIVE"}
-"BG-022":{name:"BHAUKAAL RAVI",dob:"04/05/1992",membership:"15/08/2026",designation:"TEAM LEADER",status:"ACTIVE - LAST MEMBER"}
-
-const id=(new URLSearchParams(window.location.search).get('id')||'BG-013').toUpperCase();
-const m=members[id];
-const box=document.getElementById('card');
-
-if(m){
-const qrUrl=`${window.location.origin}${window.location.pathname}?id=${id}`;
-box.innerHTML=`<div class="badge">BLACK CARD • VERIFIED</div>
-<div class="oval"><img src="https://via.placeholder.com/120/111/FFD700?text=${m.name[0]}"></div>
-<h2>${m.name}</h2><div style="color:gold;font-weight:bold;letter-spacing:2px;margin:5px 0">${id}</div>
-<div class="details"><div><span>DOB</span><b>${m.dob}</b></div><div><span>MEMBERSHIP</span><b>${m.membership}</b></div><div><span>DESIGNATION</span><b>${m.designation}</b></div><div><span>STATUS</span><b style="color:#00ff88">${m.status}</b></div></div>
-<div class="qr-container">
-<h3>SCAN TO VERIFY</h3>
-<div id="qrcode"></div>
-<button class="download-btn" onclick="downloadQR('${id}')">📥 DOWNLOAD QR</button>
+<!-- BG-007 RINKU UPDATED -->
+<div class="member-card" style="border: 1px solid #FFD700; background: #111; border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
+  <div>
+    <span style="background: #FFD700; color: #000; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: bold;">BG-007</span>
+    <h3 style="color: #fff; margin: 5px 0 0 0; font-size: 14px;">RINKU</h3>
+    <p style="color: #FFD700; margin: 0; font-size: 10px; letter-spacing: 1px;">TARGET BOY - VICE TEAM LEADER</p>
+  </div>
+  <div style="background: #fff; padding: 3px; border-radius: 4px;">
+    <span style="font-size: 10px; font-weight: bold;">QR</span>
+  </div>
 </div>
-<div class="verify">✅ VERIFIED • ACTIVE • PREMIUM</div>`;
-
-setTimeout(()=>{
-new QRCode(document.getElementById("qrcode"),{
-text:qrUrl,
-width:150,
-height:150,
-colorDark:"#000",
-colorLight:"#fff",
-correctLevel:QRCode.CorrectLevel.H
-});
-},100);
-}else{
-box.innerHTML=`<h2 style="color:#ff4444">❌ INVALID CARD</h2><p>ID <b style="color:gold">${id}</b> not found</p><div class="verify" style="background:#ff4444;color:white">NOT VERIFIED</div>`;
-}
-
-function downloadQR(cardId){
-const canvas=document.querySelector('#qrcode canvas');
-if(canvas){
-const link=document.createElement('a');
-link.href=canvas.toDataURL();
-link.download=`BHAUKAAL-${cardId}-QR.png`;
-link.click();
-}
-}
-</script>
-</body>
-</html>
