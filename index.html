@@ -114,3 +114,103 @@ render(members);
 </body>
  </html>
  {id:38,name:"Royal",role:"Boys Team"},
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhaukaal Group - Official Verification</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#fff;font-family:'Poppins',sans-serif;min-height:100vh;padding:20px}
+.header{text-align:center;padding:30px 10px;border-bottom:2px solid #FFD700;margin-bottom:20px}
+.header h1{font-family:'Orbitron',sans-serif;color:#FFD700;font-size:28px;letter-spacing:2px}
+.header p{color:#aaa;margin-top:8px}
+.header a{color:#FFD700;text-decoration:none;border:1px solid #FFD700;padding:8px 18px;border-radius:20px;display:inline-block;margin-top:15px}
+.search-box{max-width:600px;margin:25px auto;display:flex;gap:10px}
+.search-box input{flex:1;padding:14px 18px;border-radius:10px;border:2px solid #FFD700;background:#1a1a1a;color:#fff;font-size:16px;outline:none}
+.search-box button{padding:14px 25px;background:#FFD700;color:#000;border:none;border-radius:10px;font-weight:700;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;max-width:1200px;margin:0 auto}
+.card{background:linear-gradient(145deg,#1a1a1a,#151515);border:1px solid #333;border-left:4px solid #FFD700;border-radius:12px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center}
+.card.removed{opacity:0.4;border-left-color:red}
+.card .id{font-family:'Orbitron';color:#FFD700;font-size:13px}
+.card .name{font-size:17px;font-weight:600;margin-top:3px}
+.card .badge{font-size:11px;padding:5px 10px;background:#FFD700;color:#000;border-radius:20px;font-weight:700}
+.footer{text-align:center;margin-top:40px;color:#555;font-size:13px;padding:20px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>⚡ BHAUKAAL GROUP ⚡</h1>
+<p>Official Verification Portal</p>
+<p style="color:#FFD700">Total: 37 Active | Boys: 25 | Girls: 13 | ID 1-38</p>
+<a href="qr-cards.html">📱 View All QR Cards</a>
+</div>
+<div class="search-box">
+<input type="text" id="search" placeholder="Search... Lucifer, Pari, Royal, 37">
+<button onclick="document.getElementById('search').value='';filter()">Clear</button>
+</div>
+<div class="grid" id="grid"></div>
+<div class="footer">© 2026 Bhaukaal Group | Owner: Ankit Tripathi | Royal is in Boys Team</div>
+<script>
+const members=[
+{id:1,name:"Ankit Tripathi",role:"Owner"},
+{id:2,name:"Devil",role:"President"},
+{id:3,name:"Rinku",role:"Boys Team"},
+{id:4,name:"Ansul",role:"Boys Team"},
+{id:5,name:"Parmar",role:"Boys Team"},
+{id:6,name:"Sujit X",role:"Removed",removed:true},
+{id:7,name:"Nobita",role:"Boys Team"},
+{id:8,name:"Vip Raja",role:"Boys Team"},
+{id:9,name:"Anil Bhaiya",role:"Boys Team"},
+{id:10,name:"Sunny Bhaiya",role:"Boys Team"},
+{id:11,name:"Vikash",role:"Boys Team"},
+{id:12,name:"Pradeep Deepak",role:"Boys Team"},
+{id:13,name:"Lucifer",role:"Target Boy"},
+{id:14,name:"Abid Lala",role:"Target Boy"},
+{id:15,name:"Kayrav",role:"Quality Team"},
+{id:16,name:"Sagar",role:"Reporting Target"},
+{id:17,name:"Badsha (PKY)",role:"Target Boy Head"},
+{id:18,name:"Raja",role:"Target Boy"},
+{id:19,name:"Gourav",role:"Safety Team"},
+{id:20,name:"Sudhanshu",role:"Target Search"},
+{id:21,name:"Malik",role:"Reporting Manager"},
+{id:22,name:"Chandal Ravan",role:"Target Boy"},
+{id:23,name:"Shivam",role:"Quality Team"},
+{id:24,name:"Basant",role:"Target Search"},
+{id:25,name:"Mrs Bhaukaal",role:"Ladies Team"},
+{id:26,name:"Vanshika",role:"Ladies Team"},
+{id:27,name:"Riya",role:"Ladies Team"},
+{id:28,name:"Pari",role:"Ladies Team"},
+{id:29,name:"Anvi",role:"Ladies Team"},
+{id:30,name:"Yashika",role:"Ladies Team"},
+{id:31,name:"Mrs Rinku",role:"Ladies Team"},
+{id:32,name:"Queen",role:"Ladies Team"},
+{id:33,name:"Janvi",role:"Ladies Team"},
+{id:34,name:"Khushi",role:"Ladies Team"},
+{id:35,name:"Nikku",role:"Ladies Team"},
+{id:36,name:"Mrs Ravi",role:"Ladies Team"},
+{id:37,name:"Radika",role:"Ladies Team"},
+{id:38,name:"Royal",role:"Boys Team"},
+];
+const grid=document.getElementById('grid');
+function render(list){
+ grid.innerHTML='';
+ list.forEach(m=>{
+  const div=document.createElement('div');
+  div.className='card'+(m.removed?' removed':'');
+  div.innerHTML=`<div><div class="id">ID ${m.id}</div><div class="name">${m.name}</div><div style="font-size:12px;color:#888">${m.role}</div></div><span class="badge">${m.removed?'REMOVED':'VERIFIED'}</span>`;
+  grid.appendChild(div);
+ });
+}
+function filter(){
+ const q=document.getElementById('search').value.toLowerCase();
+ if(!q){render(members);return}
+ render(members.filter(m=>m.name.toLowerCase().includes(q)||String(m.id).includes(q)));
+}
+document.getElementById('search').addEventListener('input',filter);
+render(members);
+</script>
+</body>
+</html>
