@@ -1,11 +1,83 @@
-<!-- BG-007 RINKU UPDATED -->
-<div class="member-card" style="border: 1px solid #FFD700; background: #111; border-radius: 8px; padding: 10px; display: flex; justify-content: space-between; align-items: center;">
-  <div>
-    <span style="background: #FFD700; color: #000; padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: bold;">BG-007</span>
-    <h3 style="color: #fff; margin: 5px 0 0 0; font-size: 14px;">RINKU</h3>
-    <p style="color: #FFD700; margin: 0; font-size: 10px; letter-spacing: 1px;">TARGET BOY - VICE TEAM LEADER</p>
-  </div>
-  <div style="background: #fff; padding: 3px; border-radius: 4px;">
-    <span style="font-size: 10px; font-weight: bold;">QR</span>
-  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BHAUKAAL GROUP - Black Card Verification</title>
+<style>
+body{background:#050505;color:#fff;font-family:Arial;margin:0;padding:15px;}
+.header{border:3px solid gold;background:#111;text-align:center;padding:20px;border-radius:15px;box-shadow:0 0 20px gold;}
+.header h1{color:gold;text-shadow:0 0 10px red;margin:0;font-size:24px;}
+.verify-box{background:#111;border:2px solid gold;border-radius:12px;padding:20px;margin:20px 0;text-align:center;}
+input{padding:12px;width:80%;border-radius:8px;border:1px solid gold;background:#000;color:gold;text-align:center;font-size:16px;}
+button{background:gold;color:#000;padding:12px 25px;border:none;border-radius:8px;font-weight:bold;margin-top:10px;cursor:pointer;}
+.section-title{background:#8B0000;color:gold;padding:10px;border-left:6px solid gold;margin-top:25px;font-weight:bold;}
+.card{background:#101010;border:1px solid #444;border-radius:10px;padding:12px;margin:8px 0;}
+b{color:gold;} table{width:100%;border-collapse:collapse;margin-top:10px;} th{background:gold;color:#000;padding:8px;} td{padding:8px;border-bottom:1px solid #333;text-align:center;font-size:13px;}
+.valid{color:#00ff00;font-weight:bold;} .invalid{color:#ff0000;font-weight:bold;}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>🐉 BHAUKAAL GROUP DRAGON 🐉</h1>
+<p style="color:#ffcc00">Black Card Verification System with QR Codes<br>06-10-2026 UPDATED</p>
 </div>
+
+<div class="verify-box">
+<h3 style="color:gold">🔍 Verify Black Card</h3>
+<input type="text" id="cardInput" placeholder="Enter Card ID / Scan QR">
+<br><button onclick="verify()">VERIFY NOW</button>
+<p id="result" style="margin-top:15px;font-size:18px;"></p>
+</div>
+
+<div class="section-title">👑 OWNERSHIP BOARD</div>
+<div class="card"><b>Owner:</b> Ankit Tripathi | <b>President:</b> Devil | <b>Mgmt Head:</b> Mrs. Bhaukaal<br><b>Team Leader:</b> Ravi | <b>Vice Leader:</b> Rinku | <b>Vice Mgmt:</b> Ansul | <b>Girl President:</b> Nikku</div>
+
+<div class="section-title">🛡️ SAFETY CHECKING - Parmar Team</div>
+<div class="card">Gourav (New), Gaurav (New), Rewa, Ayush (New), Aman (New), Riya, Mrs Rinku (Queen), Priya</div>
+
+<div class="section-title">💛 LOYALTY TEST - Mrs Bhaukaal Team [KAVYA REMOVED]</div>
+<div class="card">Vanshika, Janvi, Radhika (Gujarat), Radhika (Ravi), Anvi, Anisha, Aman, Mrs Ayush, Khushi, Nilu<br><small style="color:red">*Kavya is removed from this list*</small></div>
+
+<div class="section-title">🔥 TARGET BOY HEAD - Badshah Team</div>
+<div class="card">Raja (New), Lucifer (New), Chandal, Ravan, Chandal Ravan, Anil Bhaiya, Sunny Bhaiya, SK, Abid Lala, Vip Raja, Vashu, Sanki, Badsha (PKY) (New), Kayrav (Akash)</div>
+
+<div class="section-title">🆔 ID LIST - Paper 2</div>
+<table>
+<tr><th>ID</th><th>CODENAME</th><th>POST</th></tr>
+<tr><td>13</td><td>Lucifer</td><td>Target Boy</td></tr>
+<tr><td>14</td><td>Abid Lala</td><td>Target Boy</td></tr>
+<tr><td>15</td><td>Kayrav</td><td>Quality Team</td></tr>
+<tr><td>16</td><td>Sagar</td><td>Reporting Target</td></tr>
+<tr><td>17</td><td>Badsha (PKY)</td><td>Target Boy Head</td></tr>
+<tr><td>18</td><td>Raja</td><td>Target Boy</td></tr>
+<tr><td>19</td><td>Gourav</td><td>Safety Team</td></tr>
+<tr><td>20</td><td>Shudharsho</td><td>Target Search</td></tr>
+<tr><td>21</td><td>Malik</td><td>Reporting Manager UK</td></tr>
+<tr><td>22</td><td>Chandal Ravan</td><td>Target Boy</td></tr>
+<tr><td>23</td><td>Shivam</td><td>Quality Team</td></tr>
+<tr><td>24</td><td>Basant</td><td>Target Search</td></tr>
+</table>
+
+<script>
+function verify(){
+ let id = document.getElementById('cardInput').value.trim();
+ let res = document.getElementById('result');
+ if(id==""){ res.innerHTML="<span class='invalid'>Please Enter ID</span>"; return; }
+ // Yaha apna valid ID list daal
+ let validIDs = ["001","002","13","14","15","16","17","18","19","20","21","22","23","24","ANKIT001","DEVIL001"];
+ if(validIDs.includes(id)){
+   res.innerHTML="<span class='valid'>✅ VALID CARD - BHAUKAAL GROUP MEMBER VERIFIED</span><br><small style='color:white'>ID: "+id+" | Date: 06-10-2026</small>";
+ } else {
+   res.innerHTML="<span class='invalid'>❌ INVALID / FAKE CARD</span>";
+ }
+}
+</script>
+
+<div style="text-align:center;margin-top:30px;border-top:2px solid gold;padding:15px;color:gold;font-size:12px;">
+© 2026 BHAUKAAL GROUP DRAGON • Secure Verification Only<br>Signature: Ankit | Founder ID: 001/001
+</div>
+
+</body>
+  </html>
